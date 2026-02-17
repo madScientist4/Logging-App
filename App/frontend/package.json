@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Frontend web interface for API Error Logger",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
