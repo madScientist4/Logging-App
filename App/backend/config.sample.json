@@ -1,0 +1,88 @@
+{
+  "_comment": "API Error Logger Configuration File",
+  "_description": "This file contains application configuration. Changes are automatically detected and applied without restarting the server (hot-reload).",
+  "_documentation": "For detailed configuration guide, see backend/CONFIGURATION.md",
+
+  "swaggerSpecs": [
+    {
+      "_comment": "Swagger/OpenAPI specification mappings",
+      "_description": "Maps API endpoint patterns to their OpenAPI specification URLs",
+      "pattern": "/api/users/*",
+      "specUrl": "https://api.example.com/swagger/users.json",
+      "_notes": [
+        "pattern: URL pattern with wildcard support (e.g., /api/users/* matches /api/users/123)",
+        "specUrl: URL to OpenAPI/Swagger specification (JSON or YAML)",
+        "Specifications are cached after first load for performance",
+        "Patterns are matched in order; first match wins"
+      ]
+    },
+    {
+      "pattern": "/api/products/*",
+      "specUrl": "https://api.example.com/swagger/products.json"
+    },
+    {
+      "pattern": "/api/orders/*",
+      "specUrl": "https://api.example.com/swagger/orders.json",
+      "_example": "This pattern matches /api/orders/123, /api/orders/create, etc."
+    }
+  ],
+
+  "email": {
+    "_comment": "Email notification configuration",
+    "_description": "Investigation team members who receive error notifications",
+    "teamEmails": [
+      "team@example.com",
+      "investigation@example.com",
+      "alerts@example.com"
+    ],
+    "_notes": [
+      "All addresses receive notifications for validated error reports",
+      "Use distribution lists or group emails when possible",
+      "SMTP credentials are configured in .env file"
+    ]
+  },
+
+  "environments": [
+    {
+      "_comment": "API environments to monitor",
+      "_description": "List of environments with health check endpoints",
+      "name": "Production",
+      "healthCheckUrl": "https://api.prod.example.com/health",
+      "_notes": [
+        "name: Display name shown in the frontend dashboard",
+        "healthCheckUrl: Endpoint to check environment availability",
+        "Health checks run every 60 seconds with 5-second timeout",
+        "Environment is 'active' if health check returns 2xx status"
+      ]
+    },
+    {
+      "name": "Staging",
+      "healthCheckUrl": "https://api.staging.example.com/health"
+    },
+    {
+      "name": "Development",
+      "healthCheckUrl": "https://api.dev.example.com/health"
+    }
+  ],
+
+  "_configuration_notes": {
+    "hot_reload": "Changes to this file are automatically detected and applied without server restart",
+    "validation": "Configuration is validated before being applied; invalid changes are rejected",
+    "required_fields": "All sections (swaggerSpecs, email, environments) are required",
+    "environment_variables": "Sensitive credentials (SMTP) are stored in .env file, not here",
+    "documentation": "See backend/CONFIGURATION.md for complete configuration guide"
+  },
+
+  "_examples": {
+    "swagger_pattern_examples": [
+      "/api/users/* - Matches /api/users/123, /api/users/create",
+      "/api/v1/* - Matches all endpoints under /api/v1/",
+      "/api/products/*/reviews - Matches /api/products/123/reviews"
+    ],
+    "health_check_examples": [
+      "https://api.example.com/health",
+      "https://api.example.com/api/health",
+      "https://api.example.com/status"
+    ]
+  }
+}

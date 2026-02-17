@@ -1,0 +1,32 @@
+{
+  "swaggerSpecs": [
+    {
+      "pattern": "/api/users/*",
+      "specUrl": "https://api.example.com/swagger/users.json"
+    },
+    {
+      "pattern": "/api/products/*",
+      "specUrl": "https://api.example.com/swagger/products.json"
+    }
+  ],
+  "email": {
+    "teamEmails": [
+      "team@example.com",
+      "investigation@example.com"
+    ]
+  },
+  "environments": [
+    {
+      "name": "Production",
+      "healthCheckUrl": "https://api.prod.example.com/health"
+    },
+    {
+      "name": "Staging",
+      "healthCheckUrl": "https://api.staging.example.com/health"
+    },
+    {
+      "name": "Development",
+      "healthCheckUrl": "https://api.dev.example.com/health"
+    }
+  ]
+}
